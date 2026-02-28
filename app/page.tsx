@@ -1,65 +1,130 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 
+const MENU_DATA = [
+  {
+    category: "BURGER 🍔",
+    items: [
+      { id: 1, name: "Single Cheeseburger", price: "€7.40", image: "/images/ch.jpeg" },
+      { id: 2, name: "Double Cheeseburger", price: "€9.40", image: "/images/duch.jpeg" },
+      { id: 3, name: "Single Smash BLT", price: "€7.40", image: "/images/blt.jpeg" },
+      { id: 4, name: "Doppel Smash BLT", price: "€9.40", image: "/images/bltdu.jpeg" },
+      { id: 5, name: "Single Kraft Burger", price: "€8.20", image: "/images/skraft.jpeg" },
+      { id: 6, name: "Double Kraft Burger", price: "€10.40", image: "/images/dukraft.jpeg" },
+    ],
+  },
+  {
+    category: "Pommes 🍟",
+    items: [
+      { id: 7, name: "Skinny Fries", price: "€4.40", image: "/images/fries.png" },
+    ],
+  },
+  {
+    category: "SOẞEN 🌶️",
+    items: [
+      { id: 8, name: "Kechap", price: "€1.00", image: "/images/ket.jpeg" },
+      { id: 9, name: "Spezialsauce", price: "€1.90", image: "/images/sp.jpeg" },
+      { id: 10, name: "Mayo", price: "€1.00", image: "/images/mayo.jpeg" },
+    ],
+  },
+];
+
 export default function Home() {
+  const [activeCategory, setActiveCategory] = useState(MENU_DATA[0].category);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-screen bg-[#0a0a0b] text-white selection:bg-amber-500/30">
+      {/* Header */}
+      <header className="sticky top-0 z-50 glass px-6 py-4 flex items-center justify-between">
+        <h1 className="text-2xl font-bold tracking-tighter text-gradient">
+          Goldline <span className="text-white">Burger</span>
+        </h1>
+      </header>
+
+      <main className="max-w-2xl mx-auto px-4 py-8">
+        {/* Hero Section */}
+        <section className="mb-12 text-center">
+          <h2 className="text-4xl font-extrabold mb-4 tracking-tight">Our Signature Menu</h2>
+          <p className="text-zinc-400 text-lg max-w-md mx-auto">
+            Experience the finest ingredients and handcrafted flavors, served fresh to your table.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        </section>
+
+        {/* Categories Navigation */}
+        <nav className="flex items-center gap-2 mb-10 overflow-x-auto pb-4 no-scrollbar">
+          {MENU_DATA.map((cat) => (
+            <button
+              key={cat.category}
+              onClick={() => setActiveCategory(cat.category)}
+              className={`px-6 py-2 rounded-full whitespace-nowrap transition-all duration-300 font-medium ${
+                activeCategory === cat.category
+                  ? "bg-amber-500 text-black shadow-lg shadow-amber-500/20"
+                  : "bg-zinc-900 text-zinc-400 hover:bg-zinc-800"
+              }`}
+            >
+              {cat.category}
+            </button>
+          ))}
+        </nav>
+
+        {/* Menu Items Grid */}
+        <div className="space-y-12">
+          {MENU_DATA.map((cat) => (
+            <div
+              key={cat.category}
+              className={`space-y-6 transition-all duration-500 ${
+                activeCategory === cat.category ? "opacity-100 translate-y-0" : "sr-only opacity-0 translate-y-4"
+              }`}
+            >
+              <div className="flex items-center justify-between border-b border-zinc-800 pb-2">
+                <h3 className="text-xl font-semibold uppercase tracking-widest text-amber-500">
+                  {cat.category}
+                </h3>
+                <span className="text-xs text-zinc-500 uppercase tracking-widest">
+                  {cat.items.length} Items
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4">
+                {cat.items.map((item) => (
+                  <div
+                    key={item.id}
+                    className="glass p-4 rounded-2xl flex items-center gap-4 hover:scale-[1.02] transition-transform duration-300 cursor-pointer premium-shadow group"
+                  >
+                    <div className="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-zinc-900">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="flex-grow">
+                      <h4 className="font-bold text-lg mb-1">{item.name}</h4>
+                      <p className="text-zinc-500 text-sm">Finest quality ingredients</p>
+                    </div>
+                    <div className="text-amber-500 font-bold text-lg">
+                      {item.price}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </main>
+
+      {/* Footer / Cart Placeholder */}
+      <footer className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-xs">
+        <button className="w-full bg-amber-500 hover:bg-amber-400 text-black font-extrabold py-4 rounded-full shadow-2xl shadow-amber-500/40 transition-all flex items-center justify-center gap-3 active:scale-95">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          Order Selection
+        </button>
+      </footer>
     </div>
   );
 }
