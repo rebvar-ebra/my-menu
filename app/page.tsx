@@ -192,12 +192,17 @@ export default function Home() {
 
       {/* Footer / Cart Placeholder */}
       <footer className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-xs">
-        <button className="w-full bg-amber-500 hover:bg-amber-400 text-black font-extrabold py-4 rounded-full shadow-2xl shadow-amber-500/40 transition-all flex items-center justify-center gap-3 active:scale-95">
+        <a
+          href="https://www.lieferando.de/speisekarte/mia-pizza-berlin#kategorie_a2203217-63bc-49d6-8a0e-06b52039db6a"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full bg-amber-500 hover:bg-amber-400 text-black font-extrabold py-4 rounded-full shadow-2xl shadow-amber-500/40 transition-all flex items-center justify-center gap-3 active:scale-95 no-underline"
+        >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
           Order Selection
-        </button>
+        </a>
       </footer>
     </div>
   );
