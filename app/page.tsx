@@ -71,6 +71,36 @@ const MENU_DATA: MenuCategory[] = [
       { id: 34, name: "(82) Mia", price: "€10.50", description: "mit Spinat, Knoblauchwurst & Weichkäse", image: "/images/pizza_veggie.png" },
     ],
   },
+  {
+    category: "PASTA 🍝",
+    items: [
+      { id: 35, name: "(44) Spaghetti Napoli", price: "€6.50", description: "mit Tomatensauce", image: "/images/pasta_spaghetti.png" },
+      { id: 36, name: "(45) Spaghetti Cabonara", price: "€7.50", description: "mit Putenschinken in Sahnesauce", image: "/images/pasta_spaghetti.png" },
+      { id: 37, name: "(46) Spaghetti Bolognese", price: "€7.50", description: "mit hausgemachter Fleischsauce", image: "/images/pasta_spaghetti.png" },
+      { id: 38, name: "(47) Spaghetti Frutti Di Mare", price: "€8.90", description: "mit versch. Meeresfrüchten, Knoblauch in Tomatensauce", image: "/images/pasta_spaghetti.png" },
+      { id: 40, name: "(48) Spaghetti Scampi", price: "€9.90", description: "mit Scampis und Knoblauch in leichter Tomatensauce", image: "/images/pasta_spaghetti.png" },
+      { id: 41, name: "(49) Spaghetti Mia", price: "€9.50", description: "mit Hähnchenbruststreifen, Spinat, Knoblauch, Weichkäse in Sahnesauce", image: "/images/pasta_spaghetti.png" },
+      { id: 42, name: "(50) Spaghetti Della Casa", price: "€8.90", description: "mit frischem Gemüse in Tomatensauce", image: "/images/pasta_spaghetti.png" },
+      { id: 43, name: "(50) Penne Pollo", price: "€8.50", description: "mit Hähnchenbruststreifen, Champignons in Tomaten- oder Sahnesauce", image: "/images/pasta_penne.png" },
+      { id: 44, name: "(51) Penne Arrabiata", price: "€8.50", description: "mit Oliven und scharfer Tomatensauce", image: "/images/pasta_penne.png" },
+      { id: 45, name: "(53) Penne Al Forno", price: "€9.90", description: "mit Hähnchenbruststreifen, versch. Gemüse in Tomatensauce mit Käse überbacken", image: "/images/pasta_penne.png" },
+      { id: 46, name: "(54) Penne Tritare", price: "€9.90", description: "mit Rinderhackfleisch und grünen Erbsen", image: "/images/pasta_penne.png" },
+      { id: 47, name: "(55) Penne Curry", price: "€9.50", description: "mit Hähnchenbruststreifen und Champignons in Currysauce", image: "/images/pasta_penne.png" },
+      { id: 48, name: "(56) Tortellini Panna", price: "€8.50", description: "mit Putenschinken in Sahnesauce", image: "/images/pasta_penne.png" },
+      { id: 49, name: "(57) Tortellini Gorgonzola", price: "€8.50", description: "mit Spinat in Gorgonzolasauce", image: "/images/pasta_penne.png" },
+      { id: 50, name: "(57) Tortellini Al Forno", price: "€9.90", description: "mit Hähnchenbruststreifen, versch. Gemüse in Tomatensauce mit Käse überbacken", image: "/images/pasta_penne.png" },
+    ],
+  },
+  {
+    category: "AUFLAUF 🥘",
+    items: [
+      { id: 51, name: "(28) Kartoffelauflauf", price: "€9.50", description: "mit Kartoffeln, Brokkoli, Putenschinken in Sahnesauce mit Käse überbacken", image: "/images/auflauf_lasagne.png" },
+      { id: 52, name: "(29) Vegetarischer Auflauf", price: "€9.00", description: "versch. Gemüse in Tomatensauce mit Käse überbacken", image: "/images/auflauf_lasagne.png" },
+      { id: 53, name: "(30) Römertopf Auflauf", price: "€9.50", description: "mit Hackfleisch, versch. Gemüse in Tomatensauce mit Käse überbacken", image: "/images/auflauf_lasagne.png" },
+      { id: 54, name: "(31) Lasagne Al Forno", price: "€9.50", description: "mit hausgemachter Rindfleischsauce und Käse überbacken", image: "/images/auflauf_lasagne.png" },
+      { id: 55, name: "(32) Lasagne Vegetarisch", price: "€9.50", description: "versch. gemüse in Tomatensauce und Käse überbacken", image: "/images/auflauf_lasagne.png" },
+    ],
+  },
 ];
 
 export default function Home() {
