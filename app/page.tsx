@@ -3,7 +3,20 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const MENU_DATA = [
+interface MenuItem {
+  id: number;
+  name: string;
+  price: string;
+  image: string;
+  description?: string;
+}
+
+interface MenuCategory {
+  category: string;
+  items: MenuItem[];
+}
+
+const MENU_DATA: MenuCategory[] = [
   {
     category: "BURGER 🍔",
     items: [
@@ -27,6 +40,35 @@ const MENU_DATA = [
       { id: 8, name: "Kechap", price: "€1.00", image: "/images/ket.jpeg" },
       { id: 9, name: "Spezialsauce", price: "€1.90", image: "/images/sp.jpeg" },
       { id: 10, name: "Mayo", price: "€1.00", image: "/images/mayo.jpeg" },
+    ],
+  },
+  {
+    category: "PIZZA 🍕",
+    items: [
+      { id: 11, name: "(59) Margherita", price: "€6.50", description: "Mit Mozzarella", image: "/images/pizza_classic.png" },
+      { id: 12, name: "(60) Funghi", price: "€7.50", description: "mit frischen Champignons", image: "/images/pizza_veggie.png" },
+      { id: 13, name: "(61) Salami", price: "€7.99", description: "mit Salami", image: "/images/pizza_classic.png" },
+      { id: 14, name: "(62) Prosciutto", price: "€7.99", description: "mit Putenschinken", image: "/images/pizza_classic.png" },
+      { id: 15, name: "(63) Hawaii", price: "€8.50", description: "mit Schinken & Ananas", image: "/images/pizza_classic.png" },
+      { id: 16, name: "(64) Mista", price: "€9.50", description: "mit Salami, Schinken, Champignons & Peperoni", image: "/images/pizza_classic.png" },
+      { id: 17, name: "(65) Quattro Formaggi", price: "€8.99", description: "mit vier versch. Käsesorten", image: "/images/pizza_classic.png" },
+      { id: 18, name: "(66) Quattro Stagioni", price: "€8.99", description: "mit Salami, Putenschinken, Champignons & Antischocken", image: "/images/pizza_classic.png" },
+      { id: 19, name: "(67) Tonno", price: "€7.99", description: "mit Thunfisch & Zwiebeln", image: "/images/pizza_seafood.png" },
+      { id: 20, name: "(68) Vegetaria", price: "€8.50", description: "mit gemischtem Gemüse", image: "/images/pizza_veggie.png" },
+      { id: 21, name: "(69) Diavolo", price: "€9.50", description: "mit scharfer Salami, Jalapeños & Champignons", image: "/images/pizza_classic.png" },
+      { id: 22, name: "(70) Calzone", price: "€9.99", description: "mit Salami, Putenschinken, Champignons & Peperoni", image: "/images/pizza_classic.png" },
+      { id: 23, name: "(71) Gorgonzola", price: "€8.99", description: "mit Spinat und Gorgonzola", image: "/images/pizza_veggie.png" },
+      { id: 24, name: "(72) Mozzarella", price: "€8.50", description: "mit frischen Tomaten, Mozzarella und Basilikum", image: "/images/pizza_veggie.png" },
+      { id: 25, name: "(73) Scampi", price: "€10.99", description: "mit Scampis und Knoblauch", image: "/images/pizza_seafood.png" },
+      { id: 26, name: "(74) Frutti Di Mare", price: "€10.50", description: "mit verschiedenen Meeresfrüchten und Knoblauch", image: "/images/pizza_seafood.png" },
+      { id: 27, name: "(75) Brokkoli", price: "€8.99", description: "mit Brokkoli und Weichkäse", image: "/images/pizza_veggie.png" },
+      { id: 28, name: "(76) Italia", price: "€9.99", description: "mit Rucola, frischen Cherrytomaten & Parmesan", image: "/images/pizza_veggie.png" },
+      { id: 29, name: "(77) Parma", price: "€10.50", description: "mit Rucola, Rinderschinken, Cherrytomaten & Parmesan", image: "/images/pizza_classic.png" },
+      { id: 30, name: "(78) Berlin", price: "€10.99", description: "mit Knoblauchwurst, Champignons, Tomaten & Zwiebeln", image: "/images/pizza_classic.png" },
+      { id: 31, name: "(79) Sardellen", price: "€9.50", description: "mit Sardellen & s. Oliven", image: "/images/pizza_seafood.png" },
+      { id: 32, name: "(80) Al Mutscho", price: "€9.99", description: "mit Hähnchen, Mais, Champignons & Jalapeños", image: "/images/pizza_classic.png" },
+      { id: 33, name: "(81) Izzy", price: "€10.50", description: "mit Hähnchen, Brokkoli, Sauce Hollandaise", image: "/images/pizza_classic.png" },
+      { id: 34, name: "(82) Mia", price: "€10.50", description: "mit Spinat, Knoblauchwurst & Weichkäse", image: "/images/pizza_veggie.png" },
     ],
   },
 ];
@@ -103,7 +145,9 @@ export default function Home() {
                     </div>
                     <div className="flex-grow">
                       <h4 className="font-bold text-lg mb-1">{item.name}</h4>
-                      <p className="text-zinc-500 text-sm">Finest quality ingredients</p>
+                      <p className="text-zinc-500 text-sm">
+                        {item.description || "Finest quality ingredients"}
+                      </p>
                     </div>
                     <div className="text-amber-500 font-bold text-lg">
                       {item.price}
